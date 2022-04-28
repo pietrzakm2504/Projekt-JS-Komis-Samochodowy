@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Komis samochodowy</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>KOMIS SAMOCHODOWY</h1>
+    <div>
+      <p class="intro">Tylko u nas! Najtańsze samochody w najlepszym stanie!</p>
+    </div>
+
+    <!-- Div for searching cars in the home page -->
+    <div id="searchDiv">
+      <label><b>MODEL:</b></label>
+      <input type="text" id="searchBox" />
+      <input type="button" value="SZUKAJ" onclick="searchFunction()" />
+    </div>
+
+    <!-- List to show available cars  -->
+    <ul id="CarsList">
+      <li name="2021">
+        <div class="CarDiv" onclick="Details('Mercedes',20000,2021,2000,20000)">
+          <img class="CarImage" src="Mercedes.jpg" alt="Mercedes Benz" />
+          <p class="CarPara"><b>MARKA</b>: Mercedes</p>
+          <p class="CarPara"><b>CENA</b>: 20000 USD</p>
+          <p class="CarPara"><b>MODEL</b>: 2021</p>
+          <p class="CarPara"><b>MOC SILNIKA</b>: 2000 CC</p>
+          <p class="CarPara"><b>PRZEBIEG</b>: 20 000 KM</p>
+        </div>
+      </li>
+      <li name="2022">
+        <div class="CarDiv" onclick="Details('Ferrari',24000,2022,2500,25000)">
+          <img class="CarImage" src="Ferrari.jpg" alt="Ferrari" />
+          <p class="CarPara"><b>MARKA</b>: Ferrari</p>
+          <p class="CarPara"><b>CENA</b>: 24000 USD</p>
+          <p class="CarPara"><b>MODEL</b>: 2022</p>
+          <p class="CarPara"><b>MOC SILNIKA</b>: 2500 CC</p>
+          <p class="CarPara"><b>PRZEBIEG</b>: 25 000 KM</p>
+        </div>
+      </li>
+      <li name="2020">
+        <div
+          class="CarDiv"
+          onclick="Details('lamborghini',28000,2020,1800,18000)"
+        >
+          <img class="CarImage" src="lamborghini.jpg" alt="lamborghini" />
+          <p class="CarPara"><b>MARKA</b>: Lamborghini</p>
+          <p class="CarPara"><b>CENA</b>: 28000 USD</p>
+          <p class="CarPara"><b>MODEL</b>: 2020</p>
+          <p class="CarPara"><b>MOC SILNIKA</b>: 1800 CC</p>
+          <p class="CarPara"><b>PRZEBIEG</b>: 18 000 KM</p>
+        </div>
+      </li>
+      <li name="2019">
+        <div class="CarDiv" onclick="Details('Mclaren',19000,2019,1700,28000)">
+          <img class="CarImage" src="mclaren-p1.jpg" alt="Mclaren P1" />
+          <p class="CarPara"><b>MARKA</b>: Mclaren</p>
+          <p class="CarPara"><b>CENA</b>: 19000 USD</p>
+          <p class="CarPara"><b>MODEL</b>: 2019</p>
+          <p class="CarPara"><b>MOC SILNIKA</b>: 1700 CC</p>
+          <p class="CarPara"><b>PRZEBIEG</b>: 28 000 KM</p>
+        </div>
+      </li>
+      <li name="2018">
+        <div class="CarDiv" onclick="Details('Porsche',12000,2018,1500,20000)">
+          <img class="CarImage" src="Porsche.jpg" alt="Porsche" />
+          <p class="CarPara"><b>MARKA</b>: Porsche</p>
+          <p class="CarPara"><b>CENA</b>: 12000 USD</p>
+          <p class="CarPara"><b>MODEL</b>: 2018</p>
+          <p class="CarPara"><b>MOC SILNIKA</b>: 1500 CC</p>
+          <p class="CarPara"><b>PRZEBIEG</b>: 20 000 KM</p>
+        </div>
+      </li>
+    </ul>
+    <br />
+
+    <!-- Form to show details of car and options for orders  -->
+    <div id="CarForm">
+      <form>
+        <h2>SZCZEGÓŁY ZAMÓWIENIA</h2>
+        <b>
+          <p>Marka samochodu: <span id="name"></span></p>
+          <p>Model: <span id="model"></span></p>
+          <p>Cena: <span id="price"></span> USD</p>
+          <p>Moc silnika: <span id="power"></span> CC</p>
+          <p>Przebieg: <span id="milage"></span> KM</p>
+        </b>
+        <p>Wybierz sposób finansowania:</p>
+        <input
+          type="radio"
+          id="lease"
+          name="carFinType"
+          value="Lease"
+          onfocusout="storeFunction('carFinType')"
+        />
+        <label for="Lease">Leasing</label><br />
+        <input
+          type="radio"
+          id="cash"
+          name="carFinType"
+          value="Cash"
+          onfocusout="storeFunction('carFinType')"
+        />
+        <label for="Cash">Gotówka</label><br /><br />
+
+        <label for="OwnerName">Imię i nazwisko:</label>
+        <input
+          type="text"
+          id="Oname"
+          name="Oname"
+          required
+          onfocusout="storeFunction('Oname')"
+        /><br /><br />
+
+        <label for="cars">Wybierz datę:</label>
+        <select name="Delivery Date" id="DDate" required>
+          <option value="date" id="date"></option></select
+        ><br /><br />
+
+        <div>
+          <input
+            type="checkbox"
+            id="tire"
+            name="tire"
+            value="tire"
+            onchange="CheckFunction(1)"
+          />
+          <label for="tire"> Opony zimowe - 100 USD</label><br />
+          <input
+            type="checkbox"
+            id="gps"
+            name="gps"
+            value="gps"
+            onchange="CheckFunction(2)"
+          />
+          <label for="gps"> GPS - 150 USD</label><br />
+          <input
+            type="checkbox"
+            id="warranty"
+            name="warranty"
+            value="warranty"
+            onchange="CheckFunction(3)"
+          />
+          <label for="warranty"> Dodatkowa gwarancja - 200 USD</label><br />
+        </div>
+        <br /><br />
+
+        <h4 id="error">hi</h4>
+
+        <h3>Cena całkowita: <span id="amount"></span> USD</h3>
+
+        <input type="button" value="KUP" onclick="PurchaseFunction()" />
+        <input type="button" value="POWRÓT" onclick="BackFunction()" />
+      </form>
+    </div>
+
+    <!-- Form to show final Purchase order  -->
+    <div id="ThankyouForm">
+      <h3>Dziękujemy za zakup!</h3>
+      <img id="CarImagePur" src="" />
+      <p>
+        Marka: <b><span id="namePur"></span></b>
+      </p>
+      <p>
+        Model: <b><span id="modelPur"></span></b>
+      </p>
+      <p>
+        Cena: <b><span id="pricePur"></span> USD </b>
+      </p>
+      <p>
+        Moc silnika: <b><span id="powerPur"></span> CC </b>
+      </p>
+      <p>
+        Przebieg: <b><span id="milagePur"></span> KM </b>
+      </p>
+      <p>
+        Sposób finansowania: <b><span id="finance"></span></b>
+      </p>
+      <p>
+        Imię i nazwisko: <b><span id="ownerName"></span></b>
+      </p>
+      <p>
+        Data dostawy: <b><span id="deliveryDate"></span></b>
+      </p>
+      <p>
+        <span id="Wtires"> <b>Opony zimowe</b> </span><br />
+        <span id="CDgps"> <b>GPS</b> </span><br />
+        <span id="CDwarranty"> <b>Dodatkowa gwarancja</b> </span>
+      </p>
+      <h3>Cena całkowita: <span id="TAmount"></span> USD</h3>
+
+      <input type="button" value="Strona główna" onclick="BackFunction()" />
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>

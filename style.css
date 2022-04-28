@@ -1,0 +1,114 @@
+h1 {
+  background-color: coral;
+  padding: 20px;
+  border-radius: 10px;
+  color: whitesmoke;
+  text-align: center;
+}
+input::button {
+  color: whitesmoke;
+  border-radius: 5px;
+  border-color: aliceblue;
+  font-size: large;
+}
+h4 {
+  display: none;
+  color: darkred;
+}
+
+ul {
+  list-style: none;
+}
+
+.CarDiv :hover {
+  cursor: pointer;
+  opacity: 50%;
+}
+
+input[type="button"] {
+  cursor: pointer;
+}
+#searchDiv {
+  width: fit-content;
+  border: solid;
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+  border-color: coral;
+}
+
+#searchBox {
+  font-size: large;
+}
+
+#carsList {
+  list-style: none;
+}
+
+#CarImagePur {
+  width: auto;
+  height: 400px;
+}
+
+#Wtires {
+  display: none;
+}
+
+#CDgps {
+  display: none;
+}
+
+#CDwarranty {
+  display: none;
+}
+
+#CarList {
+  position: relative;
+  margin: auto;
+  list-style: none;
+}
+
+#error {
+  color: darkred;
+}
+
+.intro {
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  font-size: xx-large;
+}
+.CarDiv {
+  border: Solid;
+  border-radius: 5px;
+  width: 30%;
+  margin: 10px;
+  float: left;
+}
+.CarImage {
+  width: 100%;
+  height: 300px;
+}
+.CarPara {
+  margin-left: 20px;
+}
+#CarForm {
+  border: solid;
+  border-radius: 10px;
+  border-color: coral;
+  width: 60%;
+  display: none;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+}
+#ThankyouForm {
+  border: solid;
+  border-radius: 10px;
+  border-color: coral;
+  width: 60%;
+  display: none;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+}
