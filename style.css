@@ -20,7 +20,11 @@ ul {
   list-style: none;
 }
 
-.CarDiv :hover {
+img {
+  object-fit: cover;
+}
+
+.carDiv :hover {
   cursor: pointer;
   opacity: 50%;
 }
@@ -45,24 +49,24 @@ input[type="button"] {
   list-style: none;
 }
 
-#CarImagePur {
+#carImagePur {
   width: auto;
   height: 400px;
 }
 
-#Wtires {
+#wtires {
   display: none;
 }
 
-#CDgps {
+#cdgps {
   display: none;
 }
 
-#CDwarranty {
+#cdwarranty {
   display: none;
 }
 
-#CarList {
+#carList {
   position: relative;
   margin: auto;
   list-style: none;
@@ -78,21 +82,21 @@ input[type="button"] {
   padding: 10px;
   font-size: xx-large;
 }
-.CarDiv {
+.carDiv {
   border: Solid;
   border-radius: 5px;
   width: 30%;
   margin: 10px;
   float: left;
 }
-.CarImage {
+.carImage {
   width: 100%;
   height: 300px;
 }
-.CarPara {
+.carPara {
   margin-left: 20px;
 }
-#CarForm {
+#carForm {
   border: solid;
   border-radius: 10px;
   border-color: coral;
@@ -102,7 +106,7 @@ input[type="button"] {
   text-align: center;
   padding: 20px;
 }
-#ThankyouForm {
+#thankyouForm {
   border: solid;
   border-radius: 10px;
   border-color: coral;

@@ -1,4 +1,42 @@
-function Details(name, price, model, power, milage) {
+let searchButton = document.getElementById("searchButton");
+let purchaseBtn = document.getElementById("purchaseBtn");
+let backBtn = document.getElementById("backBtn");
+let homeBtn = document.getElementById("homeBtn");
+let mercedes = document.getElementById("mercedes");
+let ferrari = document.getElementById("ferrari");
+let lamborghini = document.getElementById("lamborghini");
+let mclaren = document.getElementById("mclaren");
+let porsche = document.getElementById("porsche");
+let tire = document.getElementById("tire");
+let gps = document.getElementById("gps");
+let warranty = document.getElementById("warranty");
+
+searchButton.addEventListener("click", searchFunction);
+purchaseBtn.addEventListener("click", purchaseFunction);
+backBtn.addEventListener("click", backFunction);
+homeBtn.addEventListener("click", backFunction);
+
+mercedes.addEventListener("click", () =>
+  details("Mercedes", 20000, 2021, 2000, 20000)
+);
+ferrari.addEventListener("click", () =>
+  details("Ferrari", 24000, 2022, 2500, 25000)
+);
+lamborghini.addEventListener("click", () =>
+  details("lamborghini", 28000, 2020, 1800, 18000)
+);
+mclaren.addEventListener("click", () =>
+  details("Mclaren", 19000, 2019, 1700, 28000)
+);
+porsche.addEventListener("click", () =>
+  details("Porsche", 12000, 2018, 1500, 20000)
+);
+
+tire.addEventListener("change", () => checkFunction(1));
+gps.addEventListener("change", () => checkFunction(2));
+warranty.addEventListener("change", () => checkFunction(3));
+
+function details(name, price, model, power, milage) {
   document.getElementById("name").innerHTML = name;
   document.getElementById("price").innerHTML = price;
   document.getElementById("model").innerHTML = model;
@@ -7,7 +45,7 @@ function Details(name, price, model, power, milage) {
   document.getElementById("amount").innerHTML =
     document.getElementById("price").innerHTML;
 
-  document.getElementById("Oname").value = localStorage.getItem("Oname");
+  document.getElementById("oname").value = localStorage.getItem("Oname");
 
   if (localStorage.getItem("carFinType") == "lease") {
     document.getElementById("lease").checked = true;
@@ -16,23 +54,23 @@ function Details(name, price, model, power, milage) {
   }
   let t = parseInt(document.getElementById("amount").innerHTML);
   if (localStorage.getItem("tire") == "true") {
-    document.getElementById("Wtires").style.display = "block";
+    document.getElementById("wtires").style.display = "block";
     document.getElementById("tire").checked = true;
     t += 100;
   } else {
     document.getElementById("tire").checked = false;
   }
 
-  if (localStorage.getItem("CDgps") == "true") {
-    document.getElementById("CDgps").style.display = "block";
+  if (localStorage.getItem("cdgps") == "true") {
+    document.getElementById("cdgps").style.display = "block";
     document.getElementById("gps").checked = true;
     t += 150;
   } else {
     document.getElementById("gps").checked = false;
   }
 
-  if (localStorage.getItem("CDwarranty") == "true") {
-    document.getElementById("CDwarranty").style.display = "block";
+  if (localStorage.getItem("cdwarranty") == "true") {
+    document.getElementById("cdwarranty").style.display = "block";
     document.getElementById("warranty").checked = true;
     t += 200;
   } else {
@@ -40,8 +78,8 @@ function Details(name, price, model, power, milage) {
   }
 
   document.getElementById("amount").innerHTML = t;
-  let x = document.getElementById("CarsList");
-  let y = document.getElementById("CarForm");
+  let x = document.getElementById("carsList");
+  let y = document.getElementById("carForm");
   let z = document.getElementById("searchDiv");
 
   x.style.display = "none";
@@ -50,11 +88,11 @@ function Details(name, price, model, power, milage) {
 }
 
 // Function that will take you back to home page from details form
-function BackFunction() {
-  let x = document.getElementById("CarsList");
+function backFunction() {
+  let x = document.getElementById("carsList");
   let z = document.getElementById("searchDiv");
-  let y = document.getElementById("CarForm");
-  let w = document.getElementById("ThankyouForm");
+  let y = document.getElementById("carForm");
+  let w = document.getElementById("thankyouForm");
   y.style.display = "none";
   w.style.display = "none";
   x.style.display = "block";
@@ -62,10 +100,10 @@ function BackFunction() {
 }
 
 // Function to show Purchase order details
-function PurchaseFunction() {
+function purchaseFunction() {
   if (
-    document.getElementById("Oname").value == "" ||
-    document.getElementById("Oname").value == null
+    document.getElementById("oname").value == "" ||
+    document.getElementById("oname").value == null
   ) {
     document.getElementById("error").innerHTML =
       "Error: Uzupełnij imię i nazwisko";
@@ -75,8 +113,8 @@ function PurchaseFunction() {
     document.getElementById("error").style.display = "none";
   }
 
-  let tname = document.getElementById("Oname").value.indexOf(" ");
-  if (tname < 1 || tname == document.getElementById("Oname").value.length - 1) {
+  let tname = document.getElementById("oname").value.indexOf(" ");
+  if (tname < 1 || tname == document.getElementById("oname").value.length - 1) {
     document.getElementById("error").innerHTML =
       "Error: Uzupełnij imię i nazwisko";
     document.getElementById("error").style.display = "block";
@@ -103,15 +141,15 @@ function PurchaseFunction() {
     document.getElementById("finance").innerHTML = "Cash";
   }
   document.getElementById("ownerName").innerHTML =
-    document.getElementById("Oname").text;
+    document.getElementById("oname").text;
   document.getElementById("deliveryDate").innerHTML =
     document.getElementById("date").text;
   document.getElementById("ownerName").innerHTML =
-    document.getElementById("Oname").value;
-  document.getElementById("TAmount").innerHTML =
+    document.getElementById("oname").value;
+  document.getElementById("tamount").innerHTML =
     document.getElementById("amount").innerHTML;
-  let x = document.getElementById("ThankyouForm");
-  let y = document.getElementById("CarForm");
+  let x = document.getElementById("thankyouForm");
+  let y = document.getElementById("carForm");
   x.style.display = "block";
   y.style.display = "none";
 
@@ -123,7 +161,7 @@ function PurchaseFunction() {
   localStorage.setItem("amount", 0);
 
   carName = document.getElementById("namePur").innerHTML;
-  img = document.getElementById("CarImagePur");
+  img = document.getElementById("carImagePur");
   if (carName == "Mercedes") {
     img.src = "Mercedes.jpg";
   } else if (carName == "Ferrari") {
@@ -138,38 +176,38 @@ function PurchaseFunction() {
 }
 
 //  Function to validate form
-function CheckFunction(i) {
+function checkFunction(i) {
   total = parseInt(document.getElementById("amount").innerHTML);
 
   if (i == 1) {
     if (document.getElementById("tire").checked) {
       total += 100;
-      document.getElementById("Wtires").style.display = "block";
+      document.getElementById("wtires").style.display = "block";
       localStorage.setItem("tire", true);
     } else {
       total -= 100;
-      document.getElementById("Wtires").style.display = "none";
+      document.getElementById("wtires").style.display = "none";
       localStorage.setItem("tire", false);
     }
   } else if (i == 2) {
     if (document.getElementById("gps").checked) {
       total += 150;
-      document.getElementById("CDgps").style.display = "block";
-      localStorage.setItem("CDgps", true);
+      document.getElementById("cdgps").style.display = "block";
+      localStorage.setItem("cdgps", true);
     } else {
       total -= 150;
-      document.getElementById("CDgps").style.display = "none";
-      localStorage.setItem("CDgps", false);
+      document.getElementById("cdgps").style.display = "none";
+      localStorage.setItem("cdgps", false);
     }
   } else if (i == 3) {
     if (document.getElementById("warranty").checked) {
       total += 200;
-      document.getElementById("CDwarranty").style.display = "block";
-      localStorage.setItem("CDwarranty", true);
+      document.getElementById("cdwarranty").style.display = "block";
+      localStorage.setItem("cdwarranty", true);
     } else {
       total -= 200;
-      document.getElementById("CDwarranty").style.display = "none";
-      localStorage.setItem("CDwarranty", false);
+      document.getElementById("cdwarranty").style.display = "none";
+      localStorage.setItem("cdwarranty", false);
     }
   }
   document.getElementById("amount").innerHTML = total;
@@ -178,8 +216,8 @@ function CheckFunction(i) {
 
 // Function for searching car on home page
 function searchFunction() {
-  year = document.getElementById("searchBox").value;
-  arr = ["2018", "2019", "2020", "2021", "2022"];
+  let year = document.getElementById("searchBox").value;
+  let arr = ["2018", "2019", "2020", "2021", "2022"];
 
   for (i = 0; i < 5; i++) {
     if (year == "") {
@@ -195,7 +233,7 @@ function searchFunction() {
 // Function to store data on local storage
 function storeFunction(op) {
   if (op == "Oname") {
-    localStorage.setItem("Oname", document.getElementById("Oname").value);
+    localStorage.setItem("Oname", document.getElementById("oname").value);
   } else if (op == "carFinType") {
     if (document.getElementById("lease").checked) {
       localStorage.setItem("carFinType", "lease");
